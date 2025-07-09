@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>PohangMatBang(포항맛방)</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f8f8f8;
+    }
+    header {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 2em;
+    }
+    .intro-section {
+      background-image: url('포항배경.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .intro-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .upload-form {
+      display: flex;
+      flex-direction: column;
+    }
+    .upload-form input,
+    .upload-form textarea,
+    .upload-form button {
+      margin: 5px 0;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .section-title {
+      font-size: 1.5em;
+      margin: 30px 0 10px;
+      text-align: center;
+    }
+    .keyword-buttons,
+    .food-category {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .keyword-buttons button,
+    .food-category button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+    }
+    .local-recommendations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      width: 250px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .card-content h4 {
+      margin: 5px 0;
+    }
+    .card-content p {
+      font-size: 0.9em;
+      color: #555;
+    }
+    table {
+      width: 100%;
+      font-size: 0.9em;
+    }
+    td {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>PohangMatBang(포항맛방)</header>
+
+  <section class="intro-section">
+    <div class="intro-box">
+      <div>
+        <p>안녕하세요, 포항맛방입니다.<br>맛집을 자유롭게 공유하는 사이트입니다.</p>
+      </div>
+      <div class="upload-form">
+        <input type="text" placeholder="맛집 이름">
+        <input type="text" placeholder="위치">
+        <textarea placeholder="간단한 소개 (대표 메뉴, 가격 등)"></textarea>
+        <input type="text" placeholder="연락처">
+        <input type="text" placeholder="영업시간">
+        <input type="text" placeholder="해시태그 예) #혼밥 #데이트코스">
+        <input type="file">
+        <button>나만의 맛집을 추천해주세요</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">어떤 맛집을 찾으시나요?</div>
+    <div class="keyword-buttons">
+      <button onclick="location.href='solo.html'">혼밥하기 좋은 곳</button>
+      <button onclick="location.href='date.html'">데이트하기 좋은 레스토랑</button>
+      <button onclick="location.href='meat.html'">시험 끝나고 고기 때리는 곳</button>
+      <button onclick="location.href='meeting.html'">회식 장소</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">무엇을 먹을까요?</div>
+    <div class="food-category">
+      <button onclick="location.href='korean.html'">한식</button>
+      <button onclick="location.href='western.html'">양식</button>
+      <button onclick="location.href='chinese.html'">중식</button>
+      <button onclick="location.href='japanese.html'">일식</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title">포항 거주민이 추천하는 찐맛집</div>
+    <div class="local-recommendations">
+      <div class="card">
+        <a href="https://map.naver.com/p/entry/place/1704823665?lng=129.4049049&lat=36.0728946&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202507081723&locale=ko&svcName=map_pcv5&searchType=place&c=15.00,0,0,0,dh">
+          <img src="카츠닉.jfif" alt="카츠닉 사진">
+        </a>
+        <div class="card-content">
+          <h4>카츠닉</h4>
+          <p>포항 최고 돈카츠집</p>
+          <table>
+            <tr><td>위치</td><td>경북 포항시 북구 해안로445번길 13 1층 카츠닉</td></tr>
+            <tr><td>대표 메뉴</td><td>히레카츠 정식 ₩14,000</td></tr>
+            <tr><td>영업시간</td><td>11:30 ~ 20:30</td></tr>
+            <tr><td>연락처</td><td>054-242-0145</td></tr>
+            <tr><td>태그</td><td>#돈카츠 #분위기 좋은</td></tr>
+          </table>
+
+        </div>
+      </div>
+      <div class="card">
+        <a href="https://map.naver.com/p/entry/place/1167650992?lng=129.3983839&lat=36.0813101&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202507081731&locale=ko&svcName=map_pcv5&fromPanelNum=1&additionalHeight=76&timestamp=202507081731&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh">
+          <img src="스프커리보울.jfif" alt="스프커리보울 사진">
+        </a>
+        <div class="card-content">
+          <h4>스프커리 보울</h4>
+          <p>고품질 스프커리로 만든 맛있는 스프커리</p>
+          <table>
+            <tr><td>위치</td><td>경북 포항시 북구 장량로158번길 5-11</td></tr>
+            <tr><td>대표 메뉴</td><td>에비토치킨 ₩14,000</td></tr>
+            <tr><td>영업시간</td><td>12:00 ~ 21:00</td></tr>
+            <tr><td>연락처</td><td>054-254-4138</td></tr>
+            <tr><td>태그</td><td>#아기자기한 인테리어 #일본식 커리</td></tr>
+          </table>
+
+        </div>
+    </div>
+    <div class="card">
+        <a href="https://map.naver.com/p/entry/place/38284728?lng=129.3960475&lat=36.0815467&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202507081756&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh">
+          <img src="논스탠다드.jfif" alt="논스탠다드 사진">
+        </a>
+        <div class="card-content">
+          <h4>논스탠다드</h4>
+          <p>맛있는 음식과 좋은 분위기의 만남</p>
+          <table>
+            <tr><td>위치</td><td>경북 포항시 북구 장량로 144 논스탠다드 브런치카페</td></tr>
+            <tr><td>대표 메뉴</td><td>브루클린소스 샌드위치 ₩18,500</td></tr>
+            <tr><td>영업시간</td><td>09:30 ~ 21:00</td></tr>
+            <tr><td>연락처</td><td>0507-1435-8487</td></tr>
+            <tr><td>태그</td><td>#양식 #브런치 카페</td></tr>
+          </table>
+        </div>
+    </div>
+    <div class="card">
+        <a href="https://map.naver.com/p/entry/place/1966666142?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202507082149&locale=ko&svcName=map_pcv5">
+          <img src="온정가.jfif" alt="온정가 사진">
+        </a>
+        <div class="card-content">
+          <h4>온정가</h4>
+          <p>맑고 담백한 육수의 곰탕</p>
+          <table>
+            <tr><td>위치</td><td>경북 포항시 북구 장량주택로18번길 1 1층</td></tr>
+            <tr><td>대표 메뉴</td><td>청곰탕 ₩9,000</td></tr>
+            <tr><td>영업시간</td><td>11:00 ~ 14:30</td></tr>
+            <tr><td>연락처</td><td>054-256-1560</td></tr>
+            <tr><td>태그</td><td>#한식 #곰탕</td></tr>
+          </table>
+        </div>
+    </div>
+    <div class="card">
+        <a href="https://map.naver.com/p/entry/place/1202363439?lng=129.3996986&lat=36.0698665&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202507082205&locale=ko&svcName=map_pcv5&searchType=place&c=15.00,0,0,0,dh">
+          <img src="소바젠.jfif" alt="소바젠 사진">
+        </a>
+        <div class="card-content">
+          <h4>소바젠</h4>
+          <p>맛있는 소바와 다양한 메뉴의 향연</p>
+          <table>
+            <tr><td>위치</td><td>경북 포항시 북구 삼호로468번길 5 1층</td></tr>
+            <tr><td>대표 메뉴</td><td>온소바 ₩9,000</td></tr>
+            <tr><td>영업시간</td><td>11:30 ~ 20:00</td></tr>
+            <tr><td>연락처</td><td>054-241-7717</td></tr>
+            <tr><td>태그</td><td>#우동,소바 #깔끔</td></tr>
+          </table>
+        </div>
+
+    
+  </section>
+
+</body>
+</html>
