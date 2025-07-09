@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>평양곰탕 상세 페이지</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: serif; /* 맛집 HTML과 동일한 폰트 */
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        /* 최상단 언어 선택 바 */
+        .top-bar {
+            background-color: #1c264f; /* 헤더와 동일한 색상 */
+            color: #fff;
+            padding: 5px 20px; /* 상단바 패딩 */
+            display: flex;
+            justify-content: flex-end; /* 오른쪽 끝으로 정렬 */
+            align-items: center;
+            font-size: 0.8em;
+        }
+
+        .top-bar .language-selector {
+            margin: 0; /* 기존 language-selector의 마진 제거 */
+            font-size: 1em; /* 기본 크기 유지 */
+        }
+
+        .top-bar .language-selector img {
+            width: 14px; /* 아이콘 크기 살짝 줄임 */
+            height: 14px;
+            margin-right: 3px;
+        }
+
+        .top-bar .language-selector span {
+            padding: 2px 4px; /* 패딩 살짝 줄임 */
+        }
+
+        header {
+            background-color: #1c264f; /* 맛집 HTML과 동일한 색상 */
+            color: #fff;
+            padding: 10px 20px; /* 헤더 상하좌우 패딩 */
+            position: relative;
+            display: flex; /* 자식 요소들의 정렬을 위해 flexbox 사용 */
+            align-items: center; /* 세로 중앙 정렬 */
+            justify-content: space-between; /* 양 끝 정렬 */
+            min-height: 60px; /* 헤더 최소 높이 설정 */
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0; /* h1 기본 마진 제거 */
+            font-size: 2em; /* 제목 글씨 크기 */
+            color: #fff;
+            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* 검색창과 언어 선택기 사이 간격 */
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            padding: 8px 20px;
+            width: 300px; /* 검색창 너비 조정 */
+            max-width: 100%;
+        }
+
+        .search-box img {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 1em;
+            font-family: serif;
+        }
+
+        /* 기존 .language-selector 스타일은 .top-bar 안에 있으므로 이젠 필요없음 */
+        .language-selector {
+            /* 이 부분은 top-bar 안의 language-selector에 적용될 것 */
+            cursor: pointer;
+        }
+
+        .language-selector span {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .language-selector span:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-selector span.selected {
+            color: #ff6f61; /* 선택된 언어 색상 (주황색 계열) */
+            font-weight: bold;
+        }
+
+        /* 이미지 섹션 스타일 */
+        .top-image {
+            position: relative; /* 오버레이를 위해 필요 */
+            box-shadow: inset 0 -80px 80px rgba(0, 0, 0, 0.1);
+            background: none;
+            padding: 10px 20px;
+            max-width: 1300px; /* 중앙 정렬을 위한 최대 너비 */
+            margin: 0 auto; /* 중앙 정렬 */
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            flex: 1;
+            border-radius: 8px;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 10px; /* top-image padding만큼 안으로 */
+            left: 20px; /* top-image padding만큼 안으로 */
+            width: calc(100% - 40px); /* 패딩만큼 제외 */
+            height: calc(100% - 20px); /* 패딩만큼 제외 */
+            display: flex;
+            justify-content: space-between; /* 텍스트와 북마크를 양 끝으로 */
+            align-items: flex-start; /* 세로 상단 정렬 */
+            padding: 20px; /* 오버레이 내부 패딩 */
+            box-sizing: border-box;
+            pointer-events: none; /* 오버레이 아래 요소 클릭 가능하게 */
+        }
+
+        .image-overlay h2 {
+            margin: 0;
+            color: white;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            pointer-events: auto; /* 텍스트는 클릭 가능하게 */
+        }
+        
+        .image-overlay .restaurant-category {
+            font-size: 0.6em; /* #한식 글씨 크기 조절 */
+            font-weight: normal;
+            display: block; /* 다음 줄로 내림 */
+            margin-top: 5px;
+        }
+
+        .bookmark-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.7); /* 임시 배경 */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #333; /* 기본 별 색상 (검은색) */
+            cursor: pointer;
+            pointer-events: auto; /* 아이콘은 클릭 가능하게 */
+            z-index: 10; /* 이미지 위에 오도록 */
+            transition: color 0.2s, background-color 0.2s;
+        }
+
+        .bookmark-icon.bookmarked {
+            color: gold; /* 북마크 시 별 색상만 노란색으로 */
+            background-color: rgba(255, 255, 255, 0.9); /* 북마크 시 배경 색상 */
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: row;
+            max-width: 1300px;
+            margin: auto;
+            padding: 30px;
+            gap: 30px;
+        }
+
+        .main-content {
+            flex: 2;
+        }
+
+        .intro-box {
+            background-color: #eee;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.6;
+        }
+
+        .menu-list {
+            margin-top: 30px;
+        }
+
+        .menu-list h3 {
+            margin-bottom: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* 세로 중앙 정렬 */
+            padding: 6px 0;
+            border-bottom: 1px dashed #ccc;
+            font-size: 1rem;
+        }
+
+        .menu-item span:first-child { /* 메뉴 이름 */
+            display: flex;
+            align-items: center;
+            gap: 8px; /* 메뉴 이름과 대표 아이콘 사이 간격 */
+        }
+
+        .representative-tag {
+            background-color: #fff; /* 흰색 바탕 */
+            color: #ff6f61; /* 분홍색 글자 */
+            font-size: 0.7em;
+            padding: 2px 8px; /* 패딩 조정 */
+            border-radius: 12px; /* 더 둥글게 */
+            border: 1px solid #ff6f61; /* 분홍색 테두리 */
+            font-weight: bold;
+        }
+
+        .map-container {
+            margin-top: 30px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        .info-card {
+            flex: 1;
+            position: sticky;
+            top: 30px;
+            align-self: flex-start;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            display: flex; /* 아이콘과 텍스트를 가로로 정렬 */
+            align-items: flex-start; /* 세로 상단 정렬 (텍스트가 길어질 때) */
+            gap: 10px; /* 아이콘과 텍스트 사이 간격 */
+        }
+
+        .info-item img {
+            width: 20px; /* 아이콘 크기 */
+            height: 20px;
+            flex-shrink: 0; /* 아이콘이 줄어들지 않도록 */
+        }
+
+        .info-item .item-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-item span {
+            font-weight: bold;
+            display: inline; /* 아이콘 옆에 오도록 인라인으로 변경 */
+            margin-bottom: 0; /* 기존 마진 제거 */
+        }
+
+        .info-item p {
+            margin: 0; /* p 태그의 기본 마진 제거 */
+            font-size: 0.9em; /* 정보 텍스트 크기 조절 */
+        }
+
+        .info-link a {
+            color: #0033cc;
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .top-bar {
+                padding: 5px 15px; /* 모바일에서 패딩 조정 */
+            }
+            header {
+                flex-direction: column; /* 헤더 요소들을 세로로 쌓기 */
+                align-items: flex-start; /* 왼쪽 정렬 */
+                padding: 10px 15px;
+            }
+            .header-left {
+                margin-bottom: 10px;
+            }
+            .header-right {
+                width: 100%; /* 검색창 전체 너비 사용 */
+                justify-content: flex-end; /* 오른쪽 정렬 유지 */
+                margin-top: 5px;
+            }
+            .search-box {
+                flex-grow: 1; /* 검색창이 가능한 공간을 모두 차지 */
+                width: auto;
+            }
+            /* .language-selector는 top-bar에 있으므로 여기서는 조정 안함 */
+            .content-wrapper {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .info-card {
+                position: static; /* 스티키 해제 */
+                margin-top: 30px;
+            }
+            .top-image {
+                padding: 10px;
+            }
+            .image-overlay {
+                left: 10px;
+                width: calc(100% - 20px);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            .top-bar .language-selector {
+                font-size: 0.7em; /* 모바일에서 언어선택기 글씨 크기 줄임 */
+            }
+            .image-container img {
+                height: 150px;
+            }
+            .image-overlay h2 {
+                font-size: 1.5em;
+            }
+            .bookmark-icon {
+                width: 25px;
+                height: 25px;
+                font-size: 1.2em;
+            }
+            .content-wrapper {
+                padding: 15px;
+            }
+            .intro-box, .menu-list, .map-container, .info-card {
+                padding: 15px;
+            }
+            .info-item {
+                flex-direction: column; /* 모바일에서 아이콘과 텍스트 세로로 쌓기 */
+                align-items: flex-start;
+            }
+            .header-right {
+                /* 검색창만 있으므로 flex-direction 유지 */
+                align-items: flex-start; /* 왼쪽 정렬 */
+                gap: 10px;
+            }
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="language-selector">
+            <img src="images/icon/느낌표.png" alt="언어 선택 아이콘">
+            <span>언어를 선택해주세요.</span>
+            <span class="lang-option selected" data-lang="ko">한국어</span>
+            <span class="lang-option" data-lang="en">ENG</span>
+            <span class="lang-option" data-lang="zh">中文</span>
+            <span class="lang-option" data-lang="jp">日本語</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <h1>PohangMatBang</h1>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <img src="images/icon/돋보기.png" alt="돋보기">
+                <input type="text" id="searchInput" placeholder="검색어를 입력해주세요">
+            </div>
+            </div>
+    </header>
+
+    <div class="top-image">
+        <div class="image-container">
+          <img src="images/평양곰탕/곰탕.png" alt="대표 메뉴 이미지">
+            <img src="images/평양곰탕/외부이미지.png" alt="외부 이미지">
+            <img src="images/평양곰탕/내부이미지.png" alt="내부 이미지">
+            
+        </div>
+        <div class="image-overlay">
+            <h2>평양곰탕 <span class="restaurant-category">#한식</span></h2>
+            <div id="bookmarkIcon" class="bookmark-icon" onclick="toggleBookmark()">★</div> </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="main-content">
+            <div class="intro-box">
+                <strong>맛집 선정 이유</strong><br>
+                오래된 내공이 담긴 전통 곰탕집으로, 맑고 진한 국물과 부드러운 고기가 특징입니다. 포항 지역민들에게 꾸준히 사랑받고 있는 맛집입니다.
+            </div>
+
+            <div class="menu-list">
+                <h3>메뉴</h3>
+                <div class="menu-item"><span>곰탕 <span class="representative-tag">대표</span></span><span>10,000원</span></div>
+                <div class="menu-item"><span>곰탕 특</span><span>12,000원</span></div>
+                <div class="menu-item"><span>수육 <span class="representative-tag">대표</span></span><span>40,000원</span></div>
+                <div class="menu-item"><span>수육 대</span><span>60,000원</span></div>
+            </div>
+
+            <div class="map-container">
+                <h3>위치</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3267.104743430097!2d129.3970424762219!3d36.069554774409534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35670360d9ee7f0b%3A0x2ad6e288644e1e1f!2z7Zy066Gd6rWt7KO8642w!5e0!3m2!1sko!2skr!4v1720500000000!5m2!1sko!2skr" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-item">
+                <img src="images/icon/위치.png" alt="위치 아이콘"> <div class="item-content">
+                    <span>위치</span>
+                    <p>경상북도 포항시 북구 환호동 512-3</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="images/icon/가격.png" alt="가격 아이콘"> <div class="item-content">
+                    <span>가격</span>
+                    <p>1만원 대</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="images/icon/주차.png" alt="주차 아이콘"> <div class="item-content">
+                    <span>주차</span>
+                    <p>무료 주차장</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="images/icon/전화.png" alt="전화 아이콘"> <div class="item-content">
+                    <span>전화</span>
+                    <p>054-247-3867</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="images/icon/시간.png" alt="시간 아이콘"> <div class="item-content">
+                    <span>시간</span>
+                    <p>오전 7:30 ~ 오후 9:00</p>
+                </div>
+            </div>
+            <div class="info-item info-link">
+                <img src="images/icon/인터넷.png" alt="링크 아이콘"> <div class="item-content">
+                    <span>링크</span>
+                    <a href="https://www.google.com/maps/place/%ED%8F%89%EC%96%91%EA%B3%B0%ED%83%95/data=!3m1!4b1!4m6!3m5!1s0x35670360d9ee7f0b:0x2ad6e288644e1e1f!8m2!3d36.0695548!4d129.3992314!16s%2Fg%2F1td5p420?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank">구글 지도에서 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 언어 선택 기능 (top-bar 안의 language-selector에 적용)
+        document.querySelectorAll('.language-selector .lang-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.language-selector .lang-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                const selectedLang = this.dataset.lang;
+                console.log('선택된 언어:', selectedLang);
+            });
+        });
+
+        // 북마크 아이콘 토글 기능
+        function toggleBookmark() {
+            const bookmarkIcon = document.getElementById('bookmarkIcon');
+            bookmarkIcon.classList.toggle('bookmarked');
+            // 별 아이콘 텍스트는 변경하지 않고 CSS color만 변경하도록 함
+        }
+    </script>
+
+</body>
+</html>
