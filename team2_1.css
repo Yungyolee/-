@@ -1,4 +1,10 @@
-style
+.cute-font-regular {
+      font-family: "Cute Font", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+
     body {
       margin: 0;
       font-family: "Cute Font", sans-serif;
@@ -28,6 +34,32 @@ style
       color: rgb(45, 66, 247);
       font-size: 20px;
     }
+
+
+
+nav.menu {
+  margin-left: auto;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+nav.menu a {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+
+nav.menu a:hover {
+  background-color: rgb(11, 11, 114);
+  color: white;
+  cursor: pointer;
+}
 
     .intro-section {
       background-color: rgb(11, 11, 114);
@@ -123,4 +155,34 @@ style
 
     .food-category a:hover {
     background-color: #3e55a7;
+    }
+
+
+    html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
+}
+
+    footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 50px;
+    }
+
+    footer a {
+    color: #0077cc;
+    text-decoration: none;
+    }
+
+    footer a:hover {
+    text-decoration: underline;
     }
