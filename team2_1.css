@@ -61,6 +61,10 @@ nav.menu a:hover {
   cursor: pointer;
 }
 
+#category, #review {
+  margin-top: 300px;
+  scroll-margin-top: 100px;
+}
     .intro-section {
       background-color: rgb(11, 11, 114);
       padding: 50px 20px;
@@ -187,4 +191,5 @@ nav.menu a:hover {
     footer a:hover {
     text-decoration: underline;
     }
+
 
