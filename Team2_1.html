@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="team2_1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="team2.css">
 
   <title>POCHELIN GUIDE 포슐랭가이드</title>
 
@@ -15,9 +15,14 @@
 <body>
   <header>
     <img src="./images/pohang.jpg" width="40" height="40" alt="포항">
-  <a href="Team2_1.html" class="logo">
+  <a href="Team2.html" class="logo">
     <span class="bold-underline">POCHELIN</span> <span class="blue-text">GUIDE</span>
   </a>
+  <nav class="menu">
+      <a href="#mood">MOOD</a>
+      <a href="#category">CATEGORY</a>
+      <a href="#review">REVIEW</a>
+    </nav>
   </header>
   <section class="intro-section">
     <div class="intro-box">
@@ -52,8 +57,8 @@
 "></section>
 
 
-  <section>
-  <div class="section-title"> [🌃MOOD🌃] 어떤 맛집을 찾으시나요?</div>
+  <section id="mood">
+    <div class="section-title">[🌃MOOD🌃] 어떤 맛집을 찾으시나요?</div>
   <div class="keyword-links">
     <a href="solo.html">혼밥하기 좋은 곳</a><br>
     <a href="date.html">데이트하기 좋은 레스토랑</a><br>
@@ -62,8 +67,8 @@
   </div>
   </section>
 
-  <section>
-  <div class="section-title"> [📍CATEGORY📍] 무엇을 먹을까요?</div>
+  <section id="category">
+    <div class="section-title">[📍CATEGORY📍] 무엇을 먹을까요?</div>
   <div class="food-category">
     <a href="korean.html">한식</a>
     <a href="western.html">양식</a>
@@ -196,5 +201,13 @@
   };
 </script>
 
+<footer style="background-color: #f1f1f1; padding: 20px; text-align: center; font-size: 14px; color: #555; margin-top: 50px;">
+  <p>© 2025 POCHELIN GUIDE. All rights reserved.</p>
+  <p>문의: <a href="mailto:contact@pochelin.kr">contact@pochelin.kr</a></p>
+  <p>제작: Team 2 Web Project</p>
+</footer>
+
 </body>
+
+
 </html>
