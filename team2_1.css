@@ -106,7 +106,6 @@ nav.menu a:hover {
   background-color: #3e55a7;
 }
 
-
     .section-title {
     font-size: 40px;
     text-align: center;
@@ -159,10 +158,12 @@ nav.menu a:hover {
 
 
     html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+        margin: 0;
+  padding: 0;
+  font-family: "Cute Font", sans-serif;
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 .wrapper {
@@ -186,3 +187,4 @@ nav.menu a:hover {
     footer a:hover {
     text-decoration: underline;
     }
+
