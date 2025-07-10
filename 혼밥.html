@@ -2,29 +2,72 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>PohangMatBang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포슐랭가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-    font-family: 'Apple SD Gothic Neo', sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
+:root {
+    --main-blue: #0b0b72;
+    --accent-blue: rgb(45, 66, 247);
+    --bg-color: #f0f2f5;
+    --font-main: "Cute Font", sans-serif;
 }
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: #333;
+    overflow-x: hidden;
+}
 header {
-    background-color: #10214f;
-    color: white;
+    background-color: #ffffff;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
-header h1 { font-size: 24px; margin: 0; }
-.language-menu { font-size: 14px; }
-.language-menu a { color: white; margin-left: 10px; text-decoration: none; }
-.language-menu a:hover { text-decoration: underline; }
-
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+.bold-underline {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.blue-text {
+    color: var(--accent-blue);
+}
+nav.menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+nav.menu a {
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+nav.menu a:hover {
+    background-color: var(--main-blue);
+    color: white;
+}
 .hero {
     background-image: url('이미지/포항.jpg');
     background-size: cover;
@@ -33,9 +76,16 @@ header h1 { font-size: 24px; margin: 0; }
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
-
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+}
 .hero-content {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -46,10 +96,11 @@ header h1 { font-size: 24px; margin: 0; }
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
 }
-.tab-menu a.active { border-bottom: 2px solid #ffffff; }
-
+.tab-menu a.active {
+    border-bottom: 2px solid #ffffff;
+}
 .search-bar {
     display: flex;
     align-items: center;
@@ -57,148 +108,173 @@ header h1 { font-size: 24px; margin: 0; }
     border-radius: 25px;
     padding: 5px 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    width: 80%; max-width: 600px;
+    width: 80%;
+    max-width: 500px;
     margin-top: 10px;
 }
 .search-bar input {
-    border: none; outline: none;
-    padding: 10px 12px;
+    border: none;
+    outline: none;
+    padding: 8px 10px;
     border-radius: 25px;
     font-size: 14px;
     flex: 1;
 }
 .search-bar button {
-    background: none; border: none; cursor: pointer;
-    font-size: 18px; color: #10214f;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--main-blue);
 }
-
-.container {
-    display: flex; max-width: 1200px;
-    margin: 30px auto; gap: 20px; padding: 0 20px;
-}
-.left, .middle, .right {
-    background: white; border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 30px auto;
+    gap: 20px;
+    padding: 0 20px;
 }
 .left {
-    max-width: 250px; height: 120px; overflow: hidden;
-    flex: none;
-}
-.left h2 { color: #009966; font-size: 18px; margin-bottom: 15px; }
-.left p { font-size: 15px; color: #555; line-height: 1.4; }
-.middle {
-    flex: 2; display: flex; flex-direction: column; gap: 15px;
-}
-.keyword-buttons {
-    display: flex; gap: 10px; flex-wrap: wrap;
-}
-.keyword-button {
-    flex: 1; text-align: center; padding: 10px;
-    background-color: #ffffff;
-    border: 2px solid #009966; border-radius: 8px;
-    color: #009966; font-weight: bold; cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-}
-.keyword-button.active,
-.keyword-button:hover { background-color: #009966; color: white; }
-
-.right {
-    flex: 1;
-    max-width: 250px;
-    height: 430px; /* 그대로 유지 */
-    padding: 15px;
+    flex: 0 0 180px;
+    background: white;
     border-radius: 12px;
-    background: #fff;
+    padding: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
-
+.left h2 {
+    color: var(--main-blue);
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+.left p {
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+}
+.middle {
+    flex: 1 1 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.keyword-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    animation: fadeIn 1s ease;
+}
+.keyword-button {
+    flex: 1 1 100px;
+    text-align: center;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 2px solid var(--main-blue);
+    border-radius: 8px;
+    color: var(--main-blue);
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s, color 0.2s;
+}
+.keyword-button:hover {
+    background-color: var(--main-blue);
+    color: white;
+    transform: scale(1.05);
+}
+.right {
+    flex: 0 0 250px;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .right iframe {
     width: 100%;
-    height: calc(100% - 10px);
+    height: 300px;
     border: none;
     border-radius: 12px;
 }
-.right h2 { font-size: 18px; color: #009966; margin-bottom: 15px; }
-.list-item {
-    display: flex; align-items: center;
-    gap: 10px; margin-bottom: 10px;
-}
-.list-item img {
-    width: 50px; height: 50px;
-    object-fit: cover; border-radius: 6px;
-}
-.list-text { font-size: 14px; }
-.list-text .number {
-    color: #009966; font-weight: bold; margin-right: 5px;
-}
-
 #restaurant-cards .cards-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 10px;
 }
-
 #restaurant-cards .box {
     background: white;
     border-radius: 12px;
-    padding: 15px;
+    padding: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    box-sizing: border-box;
+    transition: transform 0.3s ease;
 }
-
+#restaurant-cards .box:hover {
+    transform: scale(1.02);
+}
 #restaurant-cards .box img {
-    width: 100%; border-radius: 10px; margin-bottom: 10px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 6px;
+    transition: transform 0.3s ease;
 }
-
+#restaurant-cards .box img:hover {
+    transform: scale(1.03);
+}
 #restaurant-cards .box p {
-    font-size: 13px;      
-    line-height: 1.5;     
-    margin: 4px 0;        
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 2px 0;
 }
-
-#restaurant-cards .box p strong {
-    font-size: 14px;      
+footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 50px;
 }
-
-#restaurant-cards .box table {
-    width: 100%; border-collapse: collapse;
-    margin-top: 10px; font-size: 14px;
+footer a {
+    color: #0077cc;
+    text-decoration: none;
 }
-#restaurant-cards .box th,
-#restaurant-cards .box td {
-    border: 1px solid #ccc; padding: 5px; text-align: center;
+footer a:hover {
+    text-decoration: underline;
 }
-
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 @media (max-width: 992px) {
-    .container { flex-direction: column; align-items: center; }
-    .left, .middle, .right { max-width: 90%; width: 100%; }
-    #restaurant-cards .box { width: calc(50% - 20px); }
+    #restaurant-cards .cards-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 @media (max-width: 600px) {
-    #restaurant-cards .box { width: 100%; }
+    #restaurant-cards .cards-wrapper {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <header>
-    <h1>PohangMatBang</h1>
-    <div class="language-menu">
-        언어 선택:
-        <a href="#">한국어</a>
-        <a href="#">ENG</a>
-        <a href="#">中文</a>
-        <a href="#">日本語</a>
+    <div class="logo-container">
+        <img src="./이미지/pohang.jpg" width="40" height="40" alt="포항">
+        <a href="Team2.html" class="logo"><span class="bold-underline">POCHELIN</span> <span class="blue-text">GUIDE</span></a>
     </div>
+    <nav class="menu">
+        <a href="#mood">MOOD</a>
+        <a href="#category">CATEGORY</a>
+        <a href="#review">REVIEW</a>
+    </nav>
 </header>
-
 <section class="hero">
     <div class="hero-content">
         <div class="tab-menu">
@@ -207,93 +283,144 @@ header h1 { font-size: 24px; margin: 0; }
         </div>
         <div class="search-bar">
             <input type="text" placeholder="검색어를 입력해주세요">
-            <button><i class="fas fa-search"></i></button>
+            <button aria-label="검색"><i class="fas fa-search"></i></button>
         </div>
     </div>
 </section>
-
-<div class="container">
-    <div class="left">
-        <h2># 포항 맛방 추천 키워드</h2>
-        <p>혼밥하고 싶을 때! 조용히 식사를 즐길 수 있는 <strong>가성비 갑</strong> 맛집이에요.</p>
-    </div>
-    <div class="middle">
+<main>
+    <aside class="left">
+        <h2># POCHELIN GUIDE 추천 키워드</h2>
+        <p>혼밥, 조용한 가성비 맛집 추천</p>
+    </aside>
+    <section class="middle">
         <div class="keyword-buttons">
             <div class="keyword-button active">혼밥 맛집</div>
             <div class="keyword-button">데이트 맛집</div>
             <div class="keyword-button">고기 맛집</div>
             <div class="keyword-button">회식 맛집</div>
         </div>
-        <div id="restaurant-cards" style="padding-top: 20px;">
+        <div id="restaurant-cards" style="padding-top: 8px;">
             <div class="cards-wrapper">
-                <!-- 카드 1 -->
                 <div class="box">
                     <a href="https://naver.me/FnVTLrhU" target="_blank">
-                    <img src="이미지/백소정.jpeg" alt="백소정"></a>
+                        <img src="이미지/백소정.jpeg" alt="백소정 외부 전경">
+                    </a>
                     <p><strong>백소정</strong></p>
                     <p>위치: 경북 포항시 북구 장량중앙로46번길 3-2 1층</p>
                     <p>영업시간: 11:00 ~ 21:00</p>
                     <p>별점: ★★★★☆</p>
                 </div>
-                <!-- 카드 2 -->
                 <div class="box">
-                   <a href="https://naver.me/IMyGn5fC" target="_blank">
-                <img src="이미지/타마시텐.jpeg" alt="타마시텐"></a>
-                    <p><strong>타마시텐</strong></p>
-                    <p>위치: 경북 포항시 북구 장량로 194 1층</p>
-                    <p>영업시간: 11:30 ~ 20:00</p>
-                    <p>별점: ★★★★☆</p>
-                </div>
-                <!-- 카드 3 -->
-                <div class="box">
-                       <a href="https://naver.me/FG7AASMS" target="_blank">
-                <img src="이미지/스프커리보울.jpeg" alt="스프커리보울"></a>
-                 <p><strong>스커리보울</strong></p>
-                    <p>위치: 경북 포항시 북구 장량로158번길 5-11</p>
-                    <p>영업시간: 12:00 ~ 21:00</p>
+                    <a href="#">
+                        <img src="이미지/백소정.jpeg" alt="샘플 맛집 외부">
+                    </a>
+                    <p><strong>샘플 맛집</strong></p>
+                    <p>위치: 포항시 샘플로 123</p>
+                    <p>영업시간: 10:00 ~ 22:00</p>
                     <p>별점: ★★★☆☆</p>
                 </div>
-                 <!-- 카드 4 -->
+                <div class="box">
+                    <a href="#">
+                        <img src="이미지/백소정.jpeg" alt="샘플2 맛집 외부">
+                    </a>
+                    <p><strong>샘플2 맛집</strong></p>
+                    <p>위치: 포항시 샘플로 456</p>
+                    <p>영업시간: 09:00 ~ 20:00</p>
+                    <p>별점: ★★★★☆</p>
+                </div>
                 <div class="box">
                     <a href="https://naver.me/FnVTLrhU" target="_blank">
-                    <img src="이미지/백소정.jpeg" alt="백소정"></a>
+                        <img src="이미지/백소정.jpeg" alt="백소정 외부 전경">
+                    </a>
                     <p><strong>백소정</strong></p>
                     <p>위치: 경북 포항시 북구 장량중앙로46번길 3-2 1층</p>
                     <p>영업시간: 11:00 ~ 21:00</p>
                     <p>별점: ★★★★☆</p>
                 </div>
-                <!-- 카드 5 -->
                 <div class="box">
-                   <a href="https://naver.me/IMyGn5fC" target="_blank">
-                <img src="이미지/타마시텐.jpeg" alt="타마시텐"></a>
-                    <p><strong>타마시텐</strong></p>
-                    <p>위치: 경북 포항시 북구 장량로 194 1층</p>
-                    <p>영업시간: 11:30 ~ 20:00</p>
-                    <p>별점: ★★★★☆</p>
-                </div>
-                <!-- 카드 6 -->
-                <div class="box">
-                       <a href="https://naver.me/FG7AASMS" target="_blank">
-                <img src="이미지/스프커리보울.jpeg" alt="스프커리보울"></a>
-                 <p><strong>스커리보울</strong></p>
-                    <p>위치: 경북 포항시 북구 장량로158번길 5-11</p>
-                    <p>영업시간: 12:00 ~ 21:00</p>
+                    <a href="#">
+                        <img src="이미지/백소정.jpeg" alt="샘플 맛집 외부">
+                    </a>
+                    <p><strong>샘플 맛집</strong></p>
+                    <p>위치: 포항시 샘플로 123</p>
+                    <p>영업시간: 10:00 ~ 22:00</p>
                     <p>별점: ★★★☆☆</p>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <img src="이미지/백소정.jpeg" alt="샘플2 맛집 외부">
+                    </a>
+                    <p><strong>샘플2 맛집</strong></p>
+                    <p>위치: 포항시 샘플로 456</p>
+                    <p>영업시간: 09:00 ~ 20:00</p>
+                    <p>별점: ★★★★☆</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="right">
-    <h2># 포항 맛집 지도</h2>
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26409.8239394974!2d129.33173669999998!3d36.0190176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567074767b672fb%3A0x6799c869bafd597b!2z7ZWc7Iqk7Yq47ZWt7Jq07Yq4!5e0!3m2!1sko!2skr!4v1720486509193!5m2!1sko!2skr"
-        width="100%"
-        height="400"
-        style="border:0; border-radius:10px;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+    </section>
+    <aside class="right">
+        <h2># 포항 맛집 지도</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26409.8239394974!2d129.33173669999998!3d36.0190176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3567074767b672fb%3A0x6799c869bafd597b!2z7ZWc7Iqk7Yq47ZWt7Jq07Yq4!5e0!3m2!1sko!2skr!4v1720486509193!5m2!1sko!2skr" width="100%" height="300" style="border:0; border-radius:10px;" allowfullscreen loading="lazy"></iframe>
+    </aside>
+</main>
+<footer>
+    <p>© 2025 POCHELIN GUIDE. All rights reserved.</p>
+    <p>문의: <a href="mailto:contact@pochelin.kr">contact@pochelin.kr</a></p>
+    <p>제작: Team 2 Web Project</p>
+</footer>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.keyword-button');
+    const cards = document.querySelectorAll('#restaurant-cards .box');
+    const searchInput = document.querySelector('.search-bar input');
+    const searchButton = document.querySelector('.search-bar button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.textContent.trim();
+            console.log(`카테고리 버튼 클릭: ${category}`);
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            cards.forEach(card => {
+                const cardText = card.textContent;
+                if (category === '혼밥 맛집' && cardText.includes('백소정')) {
+                    card.style.display = 'block';
+                } else if (category === '데이트 맛집' && cardText.includes('샘플')) {
+                    card.style.display = 'block';
+                } else if (category === '고기 맛집') {
+                    card.style.display = 'block';
+                } else if (category === '회식 맛집') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+   function performSearch() {
+    const query = searchInput.value.trim().toLowerCase();
+    console.log(`검색 실행: ${query}`);
+    cards.forEach(card => {
+        const cardText = card.textContent.toLowerCase();
+        if (cardText.includes(query) || query === '') {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+    searchButton.addEventListener('click', performSearch);
+
+    searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
+    });
+});
+</script>
 </body>
 </html>
