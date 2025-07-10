@@ -205,8 +205,8 @@ main {
 }
 #restaurant-cards .cards-wrapper {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(3, minmax(220px, 1fr)); 
+    gap: 8px; 
 }
 #restaurant-cards .box {
     background: white;
@@ -220,6 +220,8 @@ main {
 }
 #restaurant-cards .box img {
     width: 100%;
+    height: 200px; 
+    object-fit: cover; 
     border-radius: 8px;
     margin-bottom: 6px;
     transition: transform 0.3s ease;
@@ -303,7 +305,7 @@ footer a:hover {
             <div class="cards-wrapper">
                 <div class="box">
                     <a href="https://naver.me/FnVTLrhU" target="_blank">
-                        <img src="이미지/백소정.jpeg" alt="백소정 외부 전경">
+                        <img src="이미지/백소정.jpeg" alt="백소정">
                     </a>
                     <p><strong>백소정</strong></p>
                     <p>위치: 경북 포항시 북구 장량중앙로46번길 3-2 1층</p>
@@ -311,48 +313,48 @@ footer a:hover {
                     <p>별점: ★★★★☆</p>
                 </div>
                 <div class="box">
-                    <a href="https://naver.me/FnVTLrhU">
-                        <img src="이미지/백소정.jpeg" alt="샘플 맛집 외부">
+                    <a href="https://naver.me/IMyGn5fC">
+                        <img src="이미지/타마시텐.jpeg" alt="타마시텐">
                     </a>
-                    <p><strong>샘플 맛집</strong></p>
-                    <p>위치: 포항시 샘플로 123</p>
-                    <p>영업시간: 10:00 ~ 22:00</p>
+                    <p><strong>타마시텐</strong></p>
+                    <p>위치: 경북 포항시 북구 장량로 194 1층</p>
+                    <p>영업시간: 11:30 ~ 20:00</p>
                     <p>별점: ★★★☆☆</p>
                 </div>
                 <div class="box">
-                    <a href="https://naver.me/FnVTLrhU">
-                        <img src="이미지/백소정.jpeg" alt="샘플2 맛집 외부">
+                    <a href="https://naver.me/FG7AASMS">
+                        <img src="이미지/스프커리보울.jpeg" alt="스프커리보울">
                     </a>
-                    <p><strong>샘플2 맛집</strong></p>
-                    <p>위치: 포항시 샘플로 456</p>
-                    <p>영업시간: 09:00 ~ 20:00</p>
+                    <p><strong>스프커리보울</strong></p>
+                    <p>위치: 경북 포항시 북구 장량로158번길 5-11</p>
+                    <p>영업시간: 12:00 ~ 21:00</p>
                     <p>별점: ★★★★☆</p>
                 </div>
                 <div class="box">
-                    <a href="https://naver.me/FnVTLrhU" target="_blank">
-                        <img src="이미지/백소정.jpeg" alt="백소정 외부 전경">
+                    <a href="https://naver.me/FG7AASMS" target="_blank">
+                        <img src="이미지/코지하우스.jpeg" alt="코지하우스">
                     </a>
-                    <p><strong>백소정</strong></p>
+                    <p><strong>코지하우스</strong></p>
                     <p>위치: 경북 포항시 북구 장량중앙로46번길 3-2 1층</p>
-                    <p>영업시간: 11:00 ~ 21:00</p>
+                    <p>영업시간: 11:30 ~ 21:30</p>
                     <p>별점: ★★★★☆</p>
                 </div>
                 <div class="box">
-                    <a href="https://naver.me/FnVTLrhU">
-                        <img src="이미지/백소정.jpeg" alt="샘플 맛집 외부">
+                    <a href="https://naver.me/FQVXypEf">
+                        <img src="이미지/샤브20.jpeg" alt="샤브20">
                     </a>
-                    <p><strong>샘플 맛집</strong></p>
+                    <p><strong>샤브20</strong></p>
                     <p>위치: 포항시 샘플로 123</p>
-                    <p>영업시간: 10:00 ~ 22:00</p>
+                    <p>영업시간: 11:00 ~ 22:20</p>
                     <p>별점: ★★★☆☆</p>
                 </div>
                 <div class="box">
-                    <a href="https://naver.me/FnVTLrhU">
-                        <img src="이미지/백소정.jpeg" alt="샘플2 맛집 외부">
+                    <a href="https://naver.me/xrSGsL0G">
+                        <img src="이미지/명륜진사갈비.jpeg" alt="명륜진사갈비">
                     </a>
-                    <p><strong>샘플2 맛집</strong></p>
+                    <p><strong>명륜진사갈비</strong></p>
                     <p>위치: 포항시 샘플로 456</p>
-                    <p>영업시간: 09:00 ~ 20:00</p>
+                    <p>영업시간: 11:30 ~ 22:30</p>
                     <p>별점: ★★★★☆</p>
                 </div>
             </div>
@@ -376,30 +378,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search-bar input');
     const searchButton = document.querySelector('.search-bar button');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.textContent.trim();
-            console.log(`카테고리 버튼 클릭: ${category}`);
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.textContent.trim();
+        console.log(`카테고리 버튼 클릭: ${category}`);
 
-            buttons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
 
-            cards.forEach(card => {
-                const cardText = card.textContent;
-                if (category === '혼밥 맛집' && cardText.includes('백소정')) {
-                    card.style.display = 'block';
-                } else if (category === '데이트 맛집' && cardText.includes('샘플')) {
-                    card.style.display = 'block';
-                } else if (category === '고기 맛집') {
-                    card.style.display = 'block';
-                } else if (category === '회식 맛집') {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        cards.forEach(card => {
+            const cardText = card.textContent;
+
+            if (category === '혼밥 맛집' &&
+                (cardText.includes('백소정') ||
+                 cardText.includes('타마시텐') ||
+                 cardText.includes('스프커리보울'))) {
+                card.style.display = 'block';
+            } else if (category === '데이트 맛집' &&
+                (cardText.includes('백소정') ||
+                 cardText.includes('타마시텐') ||
+                 cardText.includes('스프커리보울') ||
+                 cardText.includes('코지하우스'))) {
+                card.style.display = 'block';
+            } else if (category === '고기 맛집' &&
+                cardText.includes('명륜진사갈비')) {
+                card.style.display = 'block';
+            } else if (category === '회식 맛집' &&
+                (cardText.includes('코지하우스') ||
+                 cardText.includes('샤브20') ||
+                 cardText.includes('명륜진사갈비'))) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
         });
     });
+});
 
    function performSearch() {
     const query = searchInput.value.trim().toLowerCase();
